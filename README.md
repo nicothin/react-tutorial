@@ -11,6 +11,8 @@ npm run eject
 
 ## Компоненты
 
+Самодостаточная структура, часто переиспользуется. Может принимать Свойства (см. ниже).
+
 Два типа:
 
 ```jsx
@@ -33,14 +35,14 @@ class Lesson extends Component {
 
 
 
-### State
+### Состояния (State)
 
-State — внутреннее состояние компонента.
+Это внутреннее состояние компонента.
 
-- Объект, устанавливается при инициализации компонента.
-- Если меняется, происходит перерендеринг компонента.
-- Данные из state можно передать в другие компоненты в виде пропсов.
-- Нельзя изменить state напрямую. Всегда используй метод `setState()`.
+- Это объект, устанавливается при инициализации компонента.
+- Если состояние меняется, происходит перерендеринг компонента.
+- Данные из state можно передать в другие компоненты в виде Свойств (Props).
+- Нельзя изменить состояние напрямую. Только методом `setState()`.
 
 ```jsx
 import React, { Component } from 'react';
@@ -72,4 +74,58 @@ class Counter extends Component {
 
 
 
-### Пропсы
+### Свойства (Props)
+
+Это данные, которые передаются от родительского компонета в дочерний. Могут быть переданы глубже.
+
+```jsx
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Функциональный компонент
+const CounterText = ({ counter, text }) => { // ожидает два свойства
+  return (
+    <div>
+      {text} {counter}
+    </div>
+  );
+}
+
+CounterText.propTypes = {
+  counter: PropTypes.number.isRequired, // тип — число; обязательный
+  text: PropTypes.string,               // тип — строка
+}
+
+CounterText.defaultProps = {
+  text: 'Текст счётчика: ',            // значение по умолчанию
+}
+
+// Компонент-экземпляр класса
+class Counter extends Component {
+  state = {
+    counter: 0,
+  }
+
+  // Обработчик клика по кнопке для увеличения счётчика
+  handleClick = () => {
+    // Не меняем state напрямую, используем setState, передавая в него функцию и коллбек
+    this.setState(({ counter }) => ({
+      counter: ++counter,
+    }), console.log('Счётчик изменён'))
+  }
+
+  render() {
+    const { counter } = this.state;
+
+    return (
+      <div>
+        Их тут {counter} <br /> <button onClick={this.handleClick}>+1</button>
+        <br />
+        <CounterText counter={counter} /> {/* выводим компонент, передавая ему свойства */}
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
