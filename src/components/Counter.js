@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+
 const CounterText = ({ counter, text }) => { // ожидает два свойства
   return (
     <div>
@@ -15,8 +16,9 @@ CounterText.propTypes = {
 }
 
 CounterText.defaultProps = {
-  text: 'Текст счётчика: ',            // значение по умолчанию
+  text: 'Текст счётчика: ',             // значение по умолчанию
 }
+
 
 class Counter extends Component {
   state = {
@@ -38,7 +40,7 @@ class Counter extends Component {
       <div>
         Их тут {counter} <br /> <button onClick={this.handleClick}>+1</button>
         <br />
-        <CounterText counter={counter} /> {/* выводим компонент, передавая ему свойства */}
+        <CounterText counter={counter} /> {/* выводим компонент, передавая ему свойство */}
       </div>
     );
   }
