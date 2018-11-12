@@ -82,7 +82,7 @@ class Counter extends Component {
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// Функциональный компонент
+
 const CounterText = ({ counter, text }) => { // ожидает два свойства
   return (
     <div>
@@ -91,17 +91,30 @@ const CounterText = ({ counter, text }) => { // ожидает два свойс
   );
 }
 
+// Свойства компонента CounterText
 CounterText.propTypes = {
   counter: PropTypes.number.isRequired, // тип — число; обязательный
   text: PropTypes.string,               // тип — строка
 }
 
+// Свойства компонента CounterText по умолчанию
 CounterText.defaultProps = {
-  text: 'Текст счётчика: ',            // значение по умолчанию
+  text: 'Текст счётчика: ',             // значение по умолчанию
 }
 
-// Компонент-экземпляр класса
+
 class Counter extends Component {
+
+  // Свойства компонента Counter
+  static propTypes = {
+    someProp: PropTypes.string,
+  }
+
+  // Свойства компонента Counter по умолчанию
+  static defaultProps = {
+    someProp: 'foo11',
+  }
+
   state = {
     counter: 0,
   }
@@ -121,11 +134,14 @@ class Counter extends Component {
       <div>
         Их тут {counter} <br /> <button onClick={this.handleClick}>+1</button>
         <br />
-        <CounterText counter={counter} /> {/* выводим компонент, передавая ему свойства */}
+        {this.props.someProp}
+        <br />
+        <CounterText counter={counter} /> {/* выводим компонент, передавая ему свойство */}
       </div>
     );
   }
 }
 
 export default Counter;
+
 ```
