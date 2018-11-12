@@ -76,7 +76,9 @@ class Counter extends Component {
 
 ### Свойства (Props)
 
-Это данные, которые передаются от родительского компонета в дочерний. Могут быть переданы глубже.
+Это данные, которые передаются от родительского компонента в дочерний. Могут быть переданы глубже.
+
+Передавать можно любой тип данных. Передавать можно компонент.
 
 ```jsx
 import React, { Component } from 'react';
@@ -144,4 +146,34 @@ class Counter extends Component {
 
 export default Counter;
 
+```
+
+
+
+#### Валидация свойств (Props)
+
+```jsx
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class Counter extends Component {
+
+  // Свойства компонента Counter
+  static propTypes = {
+    optionalArray: React.PropTypes.array,     // массив
+    optionalBool: React.PropTypes.bool,       // логический тип
+    optionalFunc: React.PropTypes.func,       // функция
+    optionalNumber: React.PropTypes.number,   // число
+    optionalObject: React.PropTypes.object,   // объект
+    optionalString: React.PropTypes.string,   // строка
+    optionalSymbol: React.PropTypes.symbol,   // символ
+    optionalNode: PropTypes.node,             // всё, что можно отрендерить (числа, строки, компоненты...)
+
+    // Далее: https://reactjs.org/docs/typechecking-with-proptypes.html
+  }
+
+  render() {...}
+}
+
+export default Counter;
 ```

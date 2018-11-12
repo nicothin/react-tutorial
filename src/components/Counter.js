@@ -26,7 +26,15 @@ class Counter extends Component {
 
   // Свойства компонента Counter
   static propTypes = {
-    someProp: PropTypes.string,
+    optionalArray: React.PropTypes.array,     // массив
+    optionalBool: React.PropTypes.bool,       // логический тип
+    optionalFunc: React.PropTypes.func,       // функция
+    optionalNumber: React.PropTypes.number,   // число
+    optionalObject: React.PropTypes.object,   // объект
+    optionalString: React.PropTypes.string,   // строка
+    optionalSymbol: React.PropTypes.symbol,   // символ
+    optionalNode: PropTypes.node,             // всё, что можно отрендерить (числа, строки, компоненты...)
+    // https://reactjs.org/docs/typechecking-with-proptypes.html
   }
 
   // Свойства компонента Counter по умолчанию
