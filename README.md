@@ -160,15 +160,16 @@ class Counter extends Component {
 
   // Свойства компонента Counter
   static propTypes = {
-    optionalArray: React.PropTypes.array,     // массив
-    optionalBool: React.PropTypes.bool,       // логический тип
-    optionalFunc: React.PropTypes.func,       // функция
-    optionalNumber: React.PropTypes.number,   // число
-    optionalObject: React.PropTypes.object,   // объект
-    optionalString: React.PropTypes.string,   // строка
-    optionalSymbol: React.PropTypes.symbol,   // символ
-    optionalNode: PropTypes.node,             // всё, что можно отрендерить (числа, строки, компоненты...)
-
+    // Передача свойства при вызове компонента: <Counter someProp="sss" />
+    someProp: PropTypes.string,
+    optionalArray: PropTypes.array,     // массив
+    optionalBool: PropTypes.bool,       // логический тип
+    optionalFunc: PropTypes.func,       // функция
+    optionalNumber: PropTypes.number,   // число
+    optionalObject: PropTypes.object,   // объект
+    optionalString: PropTypes.string,   // строка
+    optionalSymbol: PropTypes.symbol,   // символ
+    optionalNode: PropTypes.node,       // всё, что можно отрендерить (числа, строки, компоненты...)
     // Далее: https://reactjs.org/docs/typechecking-with-proptypes.html
   }
 
